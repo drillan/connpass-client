@@ -1,5 +1,7 @@
 name: tox demo
 on:
+    push:
+        branches: [ main ]
     pull_request:
         branches: [ main ]
 
@@ -13,7 +15,7 @@ jobs:
             - name: Set up Python
               uses: actions/setup-python@v2
               with:
-                python-version: 3.8 # tox で指定したpythonに合わせる
+                python-version: 3.11 # tox で指定したpythonに合わせる
 
             - name: Install tox
               run: pip install tox

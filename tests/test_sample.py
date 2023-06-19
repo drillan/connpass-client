@@ -6,3 +6,8 @@ def test_results():
     assert data["results_returned"] == 1
     assert data["results_available"] == 1
     assert data["results_start"] == 1
+
+
+def test_data_keys():
+    data = ConnpassClient().get(event_id="266898")
+    res = set(data.keys())
