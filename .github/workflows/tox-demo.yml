@@ -8,6 +8,9 @@ on:
 jobs:
     test:
         runs-on: ubuntu-latest
+        strategy:
+          matrix:
+            python: ["3.10", "3.11"]
         steps:
             - name: Checkout repository
               uses: actions/checkout@v2
@@ -15,10 +18,10 @@ jobs:
             - name: Set up Python
               uses: actions/setup-python@v2
               with:
-                python-version: 3.11 # tox で指定したpythonに合わせる
+                python-version: ${{ matrix.python }}
 
             - name: Install tox
               run: pip install tox
 
             - name: Run tox
-              run: tox
+              run: tox -e py
